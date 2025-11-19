@@ -1,0 +1,17 @@
+D:\Codigo fuente\Propios\MoveU\MoveU\MoveU.Application\obj\Debug\net8.0\MoveU.Application.csproj.AssemblyReference.cache
+D:\Codigo fuente\Propios\MoveU\MoveU\MoveU.Application\obj\Debug\net8.0\MoveU.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\Codigo fuente\Propios\MoveU\MoveU\MoveU.Application\obj\Debug\net8.0\MoveU.Application.AssemblyInfoInputs.cache
+D:\Codigo fuente\Propios\MoveU\MoveU\MoveU.Application\obj\Debug\net8.0\MoveU.Application.AssemblyInfo.cs
+D:\Codigo fuente\Propios\MoveU\MoveU\MoveU.Application\obj\Debug\net8.0\MoveU.Application.csproj.CoreCompileInputs.cache
+D:\Codigo fuente\Propios\MoveU\MoveU\MoveU.Application\bin\Debug\net8.0\MoveU.Application.deps.json
+D:\Codigo fuente\Propios\MoveU\MoveU\MoveU.Application\bin\Debug\net8.0\MoveU.Application.dll
+D:\Codigo fuente\Propios\MoveU\MoveU\MoveU.Application\bin\Debug\net8.0\MoveU.Application.pdb
+D:\Codigo fuente\Propios\MoveU\MoveU\MoveU.Application\bin\Debug\net8.0\MoveU.Domain.dll
+D:\Codigo fuente\Propios\MoveU\MoveU\MoveU.Application\bin\Debug\net8.0\MoveU.Infrastructure.dll
+D:\Codigo fuente\Propios\MoveU\MoveU\MoveU.Application\bin\Debug\net8.0\MoveU.Domain.pdb
+D:\Codigo fuente\Propios\MoveU\MoveU\MoveU.Application\bin\Debug\net8.0\MoveU.Infrastructure.pdb
+D:\Codigo fuente\Propios\MoveU\MoveU\MoveU.Application\obj\Debug\net8.0\MoveU.Ap.975D1A64.Up2Date
+D:\Codigo fuente\Propios\MoveU\MoveU\MoveU.Application\obj\Debug\net8.0\MoveU.Application.dll
+D:\Codigo fuente\Propios\MoveU\MoveU\MoveU.Application\obj\Debug\net8.0\refint\MoveU.Application.dll
+D:\Codigo fuente\Propios\MoveU\MoveU\MoveU.Application\obj\Debug\net8.0\MoveU.Application.pdb
+D:\Codigo fuente\Propios\MoveU\MoveU\MoveU.Application\obj\Debug\net8.0\ref\MoveU.Application.dll

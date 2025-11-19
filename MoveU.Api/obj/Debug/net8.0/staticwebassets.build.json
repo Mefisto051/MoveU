@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "PKAun8Udvkc2LSnCmnPRhG9jC2fOgGmYtVAPj9X8Ymo=",
+  "Source": "MoveU.Api",
+  "BasePath": "_content/MoveU.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

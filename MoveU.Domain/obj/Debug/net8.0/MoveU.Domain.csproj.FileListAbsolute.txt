@@ -1,0 +1,11 @@
+D:\Codigo fuente\Propios\MoveU\MoveU\MoveU.Domain\bin\Debug\net8.0\MoveU.Domain.deps.json
+D:\Codigo fuente\Propios\MoveU\MoveU\MoveU.Domain\bin\Debug\net8.0\MoveU.Domain.dll
+D:\Codigo fuente\Propios\MoveU\MoveU\MoveU.Domain\bin\Debug\net8.0\MoveU.Domain.pdb
+D:\Codigo fuente\Propios\MoveU\MoveU\MoveU.Domain\obj\Debug\net8.0\MoveU.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Codigo fuente\Propios\MoveU\MoveU\MoveU.Domain\obj\Debug\net8.0\MoveU.Domain.AssemblyInfoInputs.cache
+D:\Codigo fuente\Propios\MoveU\MoveU\MoveU.Domain\obj\Debug\net8.0\MoveU.Domain.AssemblyInfo.cs
+D:\Codigo fuente\Propios\MoveU\MoveU\MoveU.Domain\obj\Debug\net8.0\MoveU.Domain.csproj.CoreCompileInputs.cache
+D:\Codigo fuente\Propios\MoveU\MoveU\MoveU.Domain\obj\Debug\net8.0\MoveU.Domain.dll
+D:\Codigo fuente\Propios\MoveU\MoveU\MoveU.Domain\obj\Debug\net8.0\refint\MoveU.Domain.dll
+D:\Codigo fuente\Propios\MoveU\MoveU\MoveU.Domain\obj\Debug\net8.0\MoveU.Domain.pdb
+D:\Codigo fuente\Propios\MoveU\MoveU\MoveU.Domain\obj\Debug\net8.0\ref\MoveU.Domain.dll

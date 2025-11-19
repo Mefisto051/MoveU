@@ -1,0 +1,6 @@
+@MoveU.Api_HostAddress = http://localhost:5039
+
+GET {{MoveU.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

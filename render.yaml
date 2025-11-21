@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: moveu-api
+    env: dotnet
+    plan: free
+    buildCommand: dotnet publish -c Release -o output
+    startCommand: cd output && ./MoveU.Api
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production

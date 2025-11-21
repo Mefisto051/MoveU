@@ -20,7 +20,16 @@ var jwtSection = configuration.GetSection("Jwt");
 var jwtKey = jwtSection["Key"];
 
 if (string.IsNullOrWhiteSpace(jwtKey))
-    throw new InvalidOperationException("Jwt:Key no está configurado en appsettings.json.");
+{
+    if (builder.Environment.IsDevelopment())
+    {
+        jwtKey = "Development_Key_Minimo_32_Caracteres_Aqui_1234567890123456";
+    }
+    else
+    {
+        throw new InvalidOperationException("Jwt:Key no estÃ¡ configurado.");
+    }
+}
 
 var keyBytes = Encoding.UTF8.GetBytes(jwtKey);
 
@@ -33,7 +42,7 @@ builder.Services.AddControllers();
 builder.Services.AddDbContext<MoveUDbContext>(options =>
     options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
-// Dependency Injection – BACKEND COMPLETE
+// Dependency Injection â€“ BACKEND COMPLETE
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IAuthService, AuthService>();

@@ -26,5 +26,9 @@ namespace MoveU.Infrastructure.Repositories
                 .FirstOrDefaultAsync(u =>
                     u.RefreshTokens.Any(rt => rt.Token == refreshToken && !rt.IsRevoked));
         }
+        public new void Delete(User user)
+    {
+        base.Delete(user);
+    }
     }
 }

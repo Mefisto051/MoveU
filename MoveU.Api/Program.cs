@@ -8,6 +8,7 @@ using MoveU.Domain.Interfaces;
 using MoveU.Infrastructure.Data;
 using MoveU.Infrastructure.UnitOfWork;
 using System.Text;
+using Npgsql.EntityFrameworkCore.PostgreSQL;
 
 var builder = WebApplication.CreateBuilder(args);
 

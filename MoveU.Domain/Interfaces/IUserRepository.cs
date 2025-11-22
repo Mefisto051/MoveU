@@ -6,6 +6,5 @@ namespace MoveU.Domain.Interfaces
     {
         Task<User> GetByEmailAsync(string email);
         Task<User> GetByRefreshTokenAsync(string refreshToken);
-        void Delete(User user);
     }
 }

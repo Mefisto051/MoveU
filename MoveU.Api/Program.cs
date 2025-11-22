@@ -128,10 +128,54 @@ builder.Services.AddCors(options =>
 // ================================
 var app = builder.Build();
 //Migración automática
-using (var scope = app.Services.CreateScope())
+
+// ✅ MIGRACIÓN CON LOGS DETALLADOS
+try 
 {
-    var dbContext = scope.ServiceProvider.GetRequiredService<MoveUDbContext>();
-    dbContext.Database.Migrate();
+    Console.WriteLine("🔧 INICIANDO MIGRACIÓN DE BASE DE DATOS...");
+    
+    using (var scope = app.Services.CreateScope())
+    {
+        var dbContext = scope.ServiceProvider.GetRequiredService<MoveUDbContext>();
+        
+        // Verificar conexión
+        Console.WriteLine("📡 Verificando conexión a la base de datos...");
+        bool canConnect = dbContext.Database.CanConnect();
+        Console.WriteLine($"✅ Conexión a BD: {canConnect}");
+        
+        if (canConnect)
+        {
+            // Obtener migraciones pendientes
+            var pendingMigrations = dbContext.Database.GetPendingMigrations().ToList();
+            Console.WriteLine($"📋 Migraciones pendientes: {pendingMigrations.Count}");
+            
+            if (pendingMigrations.Any())
+            {
+                Console.WriteLine($"🔄 Aplicando migraciones: {string.Join(", ", pendingMigrations)}");
+                dbContext.Database.Migrate();
+                Console.WriteLine("✅ ¡TODAS LAS MIGRACIONES APLICADAS EXITOSAMENTE!");
+            }
+            else
+            {
+                Console.WriteLine("✅ No hay migraciones pendientes");
+            }
+        }
+        else
+        {
+            Console.WriteLine("❌ NO SE PUEDE CONECTAR A LA BASE DE DATOS");
+            Console.WriteLine("💡 Verifica la connection string en Render");
+        }
+    }
+}
+catch (Exception ex)
+{
+    Console.WriteLine($"💥 ERROR CRÍTICO EN MIGRACIÓN: {ex.Message}");
+    Console.WriteLine($"📄 StackTrace: {ex.StackTrace}");
+    
+    if (ex.InnerException != null)
+    {
+        Console.WriteLine($"🔍 Inner Exception: {ex.InnerException.Message}");
+    }
 }
 
 // CONFIGURACIÓN EXPLÍCITA DE PUERTO

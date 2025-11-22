@@ -4,7 +4,8 @@ namespace MoveU.Domain.Interfaces
 {
     public interface IUserRepository : IGenericRepository<User>
     {
-        Task<User?> GetByEmailAsync(string email);
-        Task<User?> GetByRefreshTokenAsync(string refreshToken);
+        Task<User> GetByEmailAsync(string email);
+        Task<User> GetByRefreshTokenAsync(string refreshToken);
+        void Delete(User user);
     }
 }

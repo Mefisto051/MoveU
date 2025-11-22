@@ -128,32 +128,6 @@ builder.Services.AddCors(options =>
 // ================================
 var app = builder.Build();
 
-// ✅ RESET COMPLETO DE BASE DE DATOS
-try 
-{
-    Console.WriteLine("🔄 INICIANDO RESET DE BASE DE DATOS...");
-    
-    using (var scope = app.Services.CreateScope())
-    {
-        var dbContext = scope.ServiceProvider.GetRequiredService<MoveUDbContext>();
-        
-        // 1. Eliminar todas las tablas
-        Console.WriteLine("🗑️ Eliminando tablas existentes...");
-        await dbContext.Database.EnsureDeletedAsync();
-        
-        // 2. Crear base de datos desde cero
-        Console.WriteLine("🆕 Creando base de datos desde cero...");
-        await dbContext.Database.EnsureCreatedAsync();
-        
-        Console.WriteLine("✅ ¡BASE DE DATOS RECREADA EXITOSAMENTE!");
-    }
-}
-catch (Exception ex)
-{
-    Console.WriteLine($"💥 ERROR: {ex.Message}");
-    Console.WriteLine($"📄 StackTrace: {ex.StackTrace}");
-}
-
 // CONFIGURACIÓN EXPLÍCITA DE PUERTO
 app.Urls.Add("http://0.0.0.0:8080");
 

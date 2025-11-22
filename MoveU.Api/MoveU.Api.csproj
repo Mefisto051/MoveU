@@ -17,5 +17,5 @@
     <ProjectReference Include="..\MoveU.Domain\MoveU.Domain.csproj" />
     <ProjectReference Include="..\MoveU.Infrastructure\MoveU.Infrastructure.csproj" />
   </ItemGroup>
-
+<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.0" />
 </Project>

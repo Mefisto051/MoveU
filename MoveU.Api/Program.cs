@@ -38,9 +38,9 @@ var keyBytes = Encoding.UTF8.GetBytes(jwtKey);
 // ================================
 builder.Services.AddControllers();
 
-// DbContext
+// DbContext - CON POSTGRESQL
 builder.Services.AddDbContext<MoveUDbContext>(options =>
-    options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+    options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
 
 // Dependency Injection – BACKEND COMPLETE
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
@@ -126,6 +126,12 @@ builder.Services.AddCors(options =>
 //  Build App
 // ================================
 var app = builder.Build();
+//Migración automática
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<MoveUDbContext>();
+    dbContext.Database.Migrate();
+}
 
 // CONFIGURACIÓN EXPLÍCITA DE PUERTO
 app.Urls.Add("http://0.0.0.0:8080");

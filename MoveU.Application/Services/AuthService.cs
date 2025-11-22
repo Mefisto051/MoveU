@@ -17,38 +17,48 @@ namespace MoveU.Application.Services
             _tokenService = tokenService;
         }
 
-        public async Task<AuthResponseDto> RegisterAsync(UserRegisterDto dto)
-        {
-            var exists = await _uow.Users.GetByEmailAsync(dto.Email);
-            if (exists != null)
-                throw new Exception("Email already registered");
+       public async Task<AuthResponseDto> RegisterAsync(UserRegisterDto dto)
+{
+    // ✅ AGREGAR ESTO TEMPORALMENTE - Permitir re-registro
+    var exists = await _uow.Users.GetByEmailAsync(dto.Email);
+    if (exists != null)
+    {
+        // Eliminar usuario existente para permitir nuevo registro
+        Console.WriteLine($"⚠️ Usuario existente encontrado: {exists.Email}. Eliminando...");
+        _uow.Users.Delete(exists);
+        await _uow.SaveAsync();
+        Console.WriteLine($"✅ Usuario eliminado: {exists.Email}");
+    }
 
-            var user = dto.ToEntity();
-            user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(dto.Password);
+    // ... el resto del código normal de registro
+    var user = dto.ToEntity();
+    user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(dto.Password);
 
-            await _uow.Users.AddAsync(user);
-            await _uow.SaveAsync();
+    await _uow.Users.AddAsync(user);
+    await _uow.SaveAsync();
 
-            var access = _tokenService.GenerateAccessToken(user);
-            var refresh = _tokenService.GenerateRefreshToken();
+    var access = _tokenService.GenerateAccessToken(user);
+    var refresh = _tokenService.GenerateRefreshToken();
 
-            var refreshTokenEntity = new RefreshToken
-            {
-                Token = refresh,
-                Expires = DateTime.UtcNow.AddDays(7),
-                UserId = user.UserId
-            };
+    var refreshTokenEntity = new RefreshToken
+    {
+        Token = refresh,
+        Expires = DateTime.UtcNow.AddDays(7),
+        UserId = user.UserId
+    };
 
-            await _uow.RefreshTokens.AddAsync(refreshTokenEntity);
-            await _uow.SaveAsync();
+    await _uow.RefreshTokens.AddAsync(refreshTokenEntity);
+    await _uow.SaveAsync();
 
-            return new AuthResponseDto
-            {
-                AccessToken = access,
-                RefreshToken = refresh,
-                User = user.ToDto()
-            };
-        }
+    Console.WriteLine($"✅ Nuevo usuario registrado: {user.Email}");
+
+    return new AuthResponseDto
+    {
+        AccessToken = access,
+        RefreshToken = refresh,
+        User = user.ToDto()
+    };
+}
 
         public async Task<AuthResponseDto> LoginAsync(LoginDto dto)
         {

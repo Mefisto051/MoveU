@@ -127,6 +127,9 @@ builder.Services.AddCors(options =>
 // ================================
 var app = builder.Build();
 
+// CONFIGURACIÓN EXPLÍCITA DE PUERTO
+app.Urls.Add("http://0.0.0.0:8080");
+
 // ================================
 //  Middlewares
 // ================================
@@ -144,6 +147,13 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
-app.MapGet("/health", () => Results.Ok(new { status = "Healthy" }));
+
+// HEALTH CHECKS
+app.MapGet("/health", () => Results.Ok(new { 
+    status = "Healthy",
+    timestamp = DateTime.UtcNow 
+}));
+
+app.MapGet("/", () => "MoveU API is running!");
 
 app.Run();

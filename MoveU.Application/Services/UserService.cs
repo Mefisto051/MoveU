@@ -25,7 +25,7 @@ namespace MoveU.Application.Services
             return u == null ? null : u.ToDto();
         }
 
-        // ✅ AGREGA ESTE MÉTODO FALTANTE
+        // ✅ AGREGA ESTE MÉTODO COMPLETO
         public async Task<UserDto> UpdateUserProfileAsync(int id, UserDto dto)
         {
             var user = await _uow.Users.GetByIdAsync(id);

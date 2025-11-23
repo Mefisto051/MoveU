@@ -4,12 +4,13 @@ import { useNavigate } from 'react-router-dom';
 import api from '../services/api';
 
 const CreatePlan = () => {
+  const location = useLocation();
   const [formData, setFormData] = useState({
     title: '',
     description: '',
     durationMinutes: 30,
     difficulty: 'Medium',
-    date: new Date().toISOString().split('T')[0] // Fecha actual
+     date: location.state?.preselectedDate || new Date().toISOString().split('T')[0]
   });
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();

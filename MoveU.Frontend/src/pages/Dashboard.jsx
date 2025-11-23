@@ -43,6 +43,24 @@ const Dashboard = () => {
     navigate('/login');
   };
 
+  const handleDeletePlan = async (planId) => {
+    if (!window.confirm('¿Estás seguro de que quieres eliminar este plan?')) {
+      return;
+    }
+
+    try {
+      console.log('🗑️ Eliminando plan:', planId);
+      await api.delete(`/activityplan/${planId}`);
+      
+      // Actualizar la lista de planes localmente
+      setActivityPlans(prev => prev.filter(plan => plan.activityPlanId !== planId));
+      alert('✅ Plan eliminado exitosamente');
+    } catch (error) {
+      console.error('❌ Error eliminando plan:', error);
+      alert('Error al eliminar el plan');
+    }
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
@@ -68,7 +86,6 @@ const Dashboard = () => {
             </div>
             <div className="flex items-center space-x-4">
               <span className="text-gray-700">Hola, {user?.fullName}</span>
-              {/* 🆕 BOTÓN "MI PERFIL" AGREGADO */}
               <button
                 onClick={() => navigate('/profile')}
                 className="text-blue-600 hover:text-blue-700 transition-colors font-medium"
@@ -150,7 +167,7 @@ const Dashboard = () => {
                   {activityPlans.map((plan) => (
                     <div key={plan.activityPlanId} className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
                       <div className="flex justify-between items-start">
-                        <div>
+                        <div className="flex-1">
                           <h3 className="font-medium text-gray-900">{plan.title}</h3>
                           <p className="text-sm text-gray-600 mt-1">{plan.description}</p>
                           <div className="flex items-center mt-2 space-x-4 text-sm text-gray-500">
@@ -159,9 +176,24 @@ const Dashboard = () => {
                             <span>📅 {new Date(plan.date).toLocaleDateString()}</span>
                           </div>
                         </div>
-                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                          Activo
-                        </span>
+                        
+                        {/* 🆕 BOTONES DE ACCIÓN */}
+                        <div className="flex space-x-2 ml-4">
+                          <button 
+                            onClick={() => navigate(`/edit-plan/${plan.activityPlanId}`)}
+                            className="text-blue-600 hover:text-blue-800 transition-colors p-2 rounded-lg hover:bg-blue-50 text-sm font-medium"
+                            title="Editar plan"
+                          >
+                            ✏️ Editar
+                          </button>
+                          <button 
+                            onClick={() => handleDeletePlan(plan.activityPlanId)}
+                            className="text-red-600 hover:text-red-800 transition-colors p-2 rounded-lg hover:bg-red-50 text-sm font-medium"
+                            title="Eliminar plan"
+                          >
+                            🗑️ Eliminar
+                          </button>
+                        </div>
                       </div>
                     </div>
                   ))}

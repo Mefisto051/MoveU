@@ -111,25 +111,11 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 });
 
 // ================================
-//  CORS (Configuración específica para Render)
+//  CORS (Configuración MÁS PERMISIVA temporal)
 // ================================
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowRender", policy =>
-    {
-        policy.WithOrigins(
-                "https://moveu-frontend.onrender.com",  // Tu frontend en Render
-                "https://moveu-frontend.onrender.com/", // Con y sin slash
-                "http://localhost:5173",                // Vite dev server
-                "http://localhost:3000"                 // React dev server
-            )
-            .AllowAnyHeader()
-            .AllowAnyMethod()
-            .AllowCredentials(); // ✅ IMPORTANTE para cookies/tokens
-    });
-
-    // Policy por defecto más permisiva para desarrollo
-    options.AddDefaultPolicy(policy =>
+    options.AddPolicy("AllowAll", policy =>
     {
         policy.AllowAnyOrigin()
               .AllowAnyMethod()
@@ -155,7 +141,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseCors("AllowRender");
+app.UseCors("AllowAll");
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();

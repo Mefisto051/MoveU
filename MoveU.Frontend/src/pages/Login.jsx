@@ -10,11 +10,24 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+  console.log('🔐 Intentando login con:', email);
+  console.log('📝 Password length:', password.length);
+    
     const result = await login(email, password);
-    if (result.success) {
-      navigate('/dashboard');
-    }
-  };
+    
+  console.log('📨 Resultado COMPLETO del login:', result);
+  console.log('🔑 Token en localStorage:', localStorage.getItem('accessToken'));
+  console.log('🔄 Refresh Token:', localStorage.getItem('refreshToken'));
+  console.log('✅ success value:', result.success);
+  
+  if (result.success) {
+    console.log('🎯 Redirigiendo a /dashboard...');
+    navigate('/dashboard');
+  } else {
+    console.log('💥 Error del login:', result.error);
+  }
+};
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center p-4">

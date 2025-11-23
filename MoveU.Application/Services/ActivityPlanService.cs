@@ -1,4 +1,4 @@
-﻿using MoveU.Application.DTOs;
+using MoveU.Application.DTOs;
 using MoveU.Application.Interfaces;
 using MoveU.Application.Mappings;
 using MoveU.Domain.Entities;
@@ -18,6 +18,13 @@ namespace MoveU.Application.Services
         public async Task<ActivityPlanDto> CreatePlanAsync(int userId, ActivityPlanDto dto)
         {
             var entity = dto.ToEntity(userId);
+            
+            // ✅ SOLUCIÓN: Asegurar que las fechas sean UTC para PostgreSQL
+            entity.Date = entity.Date.Kind == DateTimeKind.Unspecified 
+                ? DateTime.SpecifyKind(entity.Date, DateTimeKind.Utc)
+                : entity.Date.ToUniversalTime();
+                
+            entity.CreatedAt = DateTime.UtcNow; // ✅ Siempre UTC
 
             await _uow.ActivityPlans.AddAsync(entity);
             await _uow.SaveAsync();

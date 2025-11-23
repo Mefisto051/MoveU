@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MoveU.Application.DTOs;
 using MoveU.Application.Interfaces;
@@ -37,6 +37,24 @@ namespace MoveU.Api.Controllers
             int userId = GetUserId();
             var result = await _service.GetPlansByUserAsync(userId);
             return Ok(result);
+        }
+
+        // ✅ NUEVO ENDPOINT - ACTUALIZAR PLAN
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(int id, [FromBody] ActivityPlanDto dto)
+        {
+            int userId = GetUserId();
+            var result = await _service.UpdatePlanAsync(id, userId, dto);
+            return Ok(result);
+        }
+
+        // ✅ NUEVO ENDPOINT - ELIMINAR PLAN
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            int userId = GetUserId();
+            var result = await _service.DeletePlanAsync(id, userId);
+            return Ok(new { success = result, message = "Plan eliminado exitosamente" });
         }
     }
 }

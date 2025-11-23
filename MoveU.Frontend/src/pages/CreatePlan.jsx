@@ -4,7 +4,6 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import api from '../services/api';
 
 const CreatePlan = () => {
-  const navigate = useNavigate();
   const location = useLocation();
   const [formData, setFormData] = useState({
     title: '',

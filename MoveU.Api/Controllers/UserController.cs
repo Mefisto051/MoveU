@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MoveU.Application.Interfaces;
+using MoveU.Application.DTOs; // ✅ LÍNEA AGREGADA
 
 namespace MoveU.Api.Controllers
 {

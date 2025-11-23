@@ -14,6 +14,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} /> 
           <Route path="/" element={<Navigate to="/login" replace />} />
           <Route path="/create-plan" element={<CreatePlan />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </div>
     </Router>

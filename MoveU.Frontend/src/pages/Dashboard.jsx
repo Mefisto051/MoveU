@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { authAPI } from '../services/api';
+import api from '../services/api';
 
 const Dashboard = () => {
   const [user, setUser] = useState(null);
@@ -18,11 +18,11 @@ const Dashboard = () => {
         }
 
         // Obtener perfil del usuario
-        const userResponse = await authAPI.get('/user/profile');
+       const userResponse = await api.get('/user/profile');
         setUser(userResponse.data);
 
         // Obtener planes de actividad
-        const plansResponse = await authAPI.get('/activityplan');
+      const plansResponse = await api.get('/activityplan');
         setActivityPlans(plansResponse.data);
 
       } catch (error) {

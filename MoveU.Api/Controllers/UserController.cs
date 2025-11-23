@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MoveU.Application.Interfaces;
 
@@ -28,6 +28,15 @@ namespace MoveU.Api.Controllers
             var userId = GetUserId();
             var profile = await _service.GetUserProfileAsync(userId);
             return Ok(profile);
+        }
+
+        // ✅ NUEVO ENDPOINT PARA ACTUALIZAR PERFIL
+        [HttpPut("profile")]
+        public async Task<IActionResult> UpdateProfile([FromBody] UserDto dto)
+        {
+            var userId = GetUserId();
+            var updatedProfile = await _service.UpdateUserProfileAsync(userId, dto);
+            return Ok(updatedProfile);
         }
     }
 }

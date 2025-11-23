@@ -5,6 +5,7 @@ import Dashboard from './pages/Dashboard';
 import CreatePlan from './pages/CreatePlan';
 import Profile from './pages/Profile'; 
 import EditPlan from './pages/EditPlan';
+import Calendar from './pages/Calendar';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/create-plan" element={<CreatePlan />} />
           <Route path="/profile" element={<Profile />} /> 
           <Route path="/edit-plan/:id" element={<EditPlan />} />
+          <Route path="/calendar" element={<Calendar />} />
           <Route path="/" element={<Navigate to="/login" replace />} />
         </Routes>
       </div>

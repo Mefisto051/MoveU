@@ -1,4 +1,4 @@
-﻿using MoveU.Application.DTOs;
+using MoveU.Application.DTOs;
 
 namespace MoveU.Application.Interfaces
 {
@@ -6,5 +6,7 @@ namespace MoveU.Application.Interfaces
     {
         Task<ActivityPlanDto> CreatePlanAsync(int userId, ActivityPlanDto dto);
         Task<IEnumerable<ActivityPlanDto>> GetPlansByUserAsync(int userId);
+        Task<ActivityPlanDto> UpdatePlanAsync(int planId, int userId, ActivityPlanDto dto); // ✅ NUEVO
+        Task<bool> DeletePlanAsync(int planId, int userId); // ✅ NUEVO
     }
 }

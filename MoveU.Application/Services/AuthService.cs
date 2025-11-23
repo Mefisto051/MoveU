@@ -18,19 +18,8 @@ namespace MoveU.Application.Services
         }
 
        public async Task<AuthResponseDto> RegisterAsync(UserRegisterDto dto)
-{
-    // ✅ AGREGAR ESTO TEMPORALMENTE - Permitir re-registro
-    var exists = await _uow.Users.GetByEmailAsync(dto.Email);
-    if (exists != null)
-    {
-        // Eliminar usuario existente para permitir nuevo registro
-        Console.WriteLine($"⚠️ Usuario existente encontrado: {exists.Email}. Eliminando...");
-        _uow.Users.Delete(exists);
-        await _uow.SaveAsync();
-        Console.WriteLine($"✅ Usuario eliminado: {exists.Email}");
-    }
-
-    // ... el resto del código normal de registro
+{  
+    // ✅ REGISTRO SIMPLE SIN VERIFICACIÓN (TEMPORAL)
     var user = dto.ToEntity();
     user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(dto.Password);
 

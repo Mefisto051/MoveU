@@ -1,4 +1,4 @@
-﻿using MoveU.Application.DTOs;
+using MoveU.Application.DTOs;
 
 namespace MoveU.Application.Interfaces
 {
@@ -6,5 +6,6 @@ namespace MoveU.Application.Interfaces
     {
         Task<UserDto> GetUserProfileAsync(int id);
         Task<UserDto> CreateUserAsync(UserRegisterDto dto);
+        Task<UserDto> UpdateUserProfileAsync(int id, UserDto dto);
     }
 }

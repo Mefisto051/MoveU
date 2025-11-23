@@ -133,14 +133,9 @@ const Dashboard = () => {
 
           {/* Planes de actividad */}
           <div className="bg-white shadow rounded-lg">
-            <div className="px-6 py-4 border-b border-gray-200 flex justify-between items-center bg-blue-50">
-              <h2 className="text-lg font-bold text-gray-900">Mis Planes de Actividad</h2>
-              <button 
-                onClick={() => navigate('/create-plan')}
-                className="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors font-bold shadow-md"
-              >
-                🏃‍♂️ + Nuevo Plan
-              </button>
+            {/* 🎯 SOLO EL TÍTULO - SIN BOTÓN PEQUEÑO */}
+            <div className="px-6 py-4 border-b border-gray-200">
+              <h2 className="text-lg font-bold text-gray-900 text-center">Mis Planes de Actividad</h2>
             </div>
             
             <div className="p-6">

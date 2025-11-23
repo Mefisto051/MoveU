@@ -127,43 +127,39 @@ const Dashboard = () => {
               <h2 className="text-lg font-medium text-gray-900">Mis Planes de Actividad</h2>
             </div>
             <div className="p-6">
-              {activityPlans.length > 0 ? (
-                <div className="space-y-4">
-                  {activityPlans.map((plan) => (
-                    <div key={plan.activityPlanId} className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
-                      <div className="flex justify-between items-start">
-                        <div>
-                          <h3 className="font-medium text-gray-900">{plan.title}</h3>
-                          <p className="text-sm text-gray-600 mt-1">{plan.description}</p>
-                          <div className="flex items-center mt-2 space-x-4 text-sm text-gray-500">
-                            <span>⏱️ {plan.durationMinutes} min</span>
-                            <span>📊 {plan.difficulty}</span>
-                            <span>📅 {new Date(plan.date).toLocaleDateString()}</span>
-                          </div>
-                        </div>
-                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                          Activo
-                        </span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <div className="text-center py-8">
-                  <div className="text-gray-400 text-6xl mb-4">🏃‍♂️</div>
-                  <h3 className="text-lg font-medium text-gray-900 mb-2">No tienes planes de actividad</h3>
-                  <p className="text-gray-600 mb-4">Comienza creando tu primer plan de ejercicios.</p>
-                  <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
-                    Crear primer plan
-                  </button>
-                </div>
-              )}
+             {activityPlans.length > 0 ? (
+  <div className="space-y-4">
+    {activityPlans.map((plan) => (
+      <div key={plan.activityPlanId} className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+        <div className="flex justify-between items-start">
+          <div>
+            <h3 className="font-medium text-gray-900">{plan.title}</h3>
+            <p className="text-sm text-gray-600 mt-1">{plan.description}</p>
+            <div className="flex items-center mt-2 space-x-4 text-sm text-gray-500">
+              <span>⏱️ {plan.durationMinutes} min</span>
+              <span>📊 {plan.difficulty}</span>
+              <span>📅 {new Date(plan.date).toLocaleDateString()}</span>
             </div>
           </div>
+          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+            Activo
+          </span>
         </div>
-      </main>
-    </div>
-  );
-};
+      </div>
+    ))}
+  </div>
+) : (
+  <div className="text-center py-8">
+    <div className="text-gray-400 text-6xl mb-4">🏃‍♂️</div>
+    <h3 className="text-lg font-medium text-gray-900 mb-2">No tienes planes de actividad</h3>
+    <p className="text-gray-600 mb-4">Comienza creando tu primer plan de ejercicios.</p>
+    <button 
+      onClick={() => navigate('/create-plan')}
+      className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium"
+    >
+      Crear primer plan
+    </button>
+  </div>
+)}
 
 export default Dashboard;

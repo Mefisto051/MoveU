@@ -132,9 +132,7 @@ const Dashboard = () => {
       + Nuevo Plan
     </button>
   </div>
-  
-  <div className="p-6">
-            <div className="p-6">
+              <div className="p-6">
               {activityPlans.length > 0 ? (
                 <div className="space-y-4">
                   {activityPlans.map((plan) => (

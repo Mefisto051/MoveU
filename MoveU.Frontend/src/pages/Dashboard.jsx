@@ -68,6 +68,13 @@ const Dashboard = () => {
             </div>
             <div className="flex items-center space-x-4">
               <span className="text-gray-700">Hola, {user?.fullName}</span>
+              {/* 🆕 BOTÓN "MI PERFIL" AGREGADO */}
+              <button
+                onClick={() => navigate('/profile')}
+                className="text-blue-600 hover:text-blue-700 transition-colors font-medium"
+              >
+                Mi Perfil
+              </button>
               <button
                 onClick={handleLogout}
                 className="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-300 transition-colors"
@@ -133,7 +140,6 @@ const Dashboard = () => {
 
           {/* Planes de actividad */}
           <div className="bg-white shadow rounded-lg">
-            {/* 🎯 SOLO EL TÍTULO - SIN BOTÓN PEQUEÑO */}
             <div className="px-6 py-4 border-b border-gray-200">
               <h2 className="text-lg font-bold text-gray-900 text-center">Mis Planes de Actividad</h2>
             </div>

@@ -149,12 +149,18 @@ const Dashboard = () => {
           <div className="mb-8 text-center">
             <button 
               onClick={() => navigate('/create-plan')}
-              className="bg-gradient-to-r from-green-500 to-blue-600 text-white px-8 py-4 rounded-xl hover:from-green-600 hover:to-blue-700 transition-all font-bold text-lg shadow-lg"
+              className="bg-gradient-to-r from-green-500 to-blue-600 text-white px-8 py-4 rounded-xl hover:from-green-600 hover:to-blue-700 transition-all font-bold text-lg shadow-lg mr-4"
             >
-              🏃‍♂️ Crear Nuevo Plan de Ejercicios
+              🏃‍♂️ Crear Nuevo Plan
+            </button>
+            <button 
+              onClick={() => navigate('/calendar')}
+              className="bg-gradient-to-r from-purple-500 to-pink-600 text-white px-8 py-4 rounded-xl hover:from-purple-600 hover:to-pink-700 transition-all font-bold text-lg shadow-lg"
+            >
+              📅 Ver Calendario
             </button>
           </div>
-
+          
           {/* Planes de actividad */}
           <div className="bg-white shadow rounded-lg">
             <div className="px-6 py-4 border-b border-gray-200">

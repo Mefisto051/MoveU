@@ -1,16 +1,17 @@
 // src/pages/CreatePlan.jsx
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom'; 
 import api from '../services/api';
 
 const CreatePlan = () => {
+  const navigate = useNavigate();
   const location = useLocation();
   const [formData, setFormData] = useState({
     title: '',
     description: '',
     durationMinutes: 30,
     difficulty: 'Medium',
-     date: location.state?.preselectedDate || new Date().toISOString().split('T')[0]
+      date: location.state?.preselectedDate || new Date().toISOString().split('T')[0]
   });
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
